@@ -1,0 +1,19 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.Green-Button{
+    background-color: green;
+    color: white;
+}
+
+.content {
+    padding-top: 10px;
+}
+
+.row { 
+    display: flex;
+    gap: 10px;
+}
+
+
