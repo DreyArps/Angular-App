@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { UserlistComponent } from './userlist/userlist.component';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +6,9 @@ import { UserlistComponent } from './userlist/userlist.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
+userAddForm() {
+throw new Error('Method not implemented.');
+}
   title = 'Angular-app';
-
-  constructor(private _dialog: MatDialog){}
-  userAddForm (){ 
-    this._dialog.open(UserlistComponent);
-  }
 }

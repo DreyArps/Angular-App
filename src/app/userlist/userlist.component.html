@@ -1,20 +1,20 @@
-<div mat-dialog-title>
-    <h1>Creating New User</h1>
-</div>
-
-<div mat-dialog-content class="content">
-    <div class="row">
-    <mat-form-field appearance="outline">
-        <mat-label>First Name </mat-label>
-              <input matInput type="text" placeholder="Ex. Andree ">
-            </mat-form-field>
-         <mat-form-field appearance="outline">
-        <mat-label>Last Name </mat-label>
-              <input matInput placeholder="Ex. Arpon">
-         </mat-form-field>
-     </div>
-</div>
-<div mat-dialog-actions>
-    <button mat-raised-button class ="Green-Button" > Add </button>
-    <button mat-raised-button color ="warn"> Cancel</button>
+<div class="table-container">
+<table class="table-container">
+    <thead>
+      <tr class="table List-table">
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Avatar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td><img [src]="user.avatarUrl" alt="Avatar"></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

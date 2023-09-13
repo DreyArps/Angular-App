@@ -1,19 +1,38 @@
-.example-spacer {
-    flex: 1 1 auto;
+.List-table {
+   
+    width: 100%;
+    border-collapse: collapse;
   }
-
-.Green-Button{
-    background-color: green;
-    color: white;
-}
-
-.content {
-    padding-top: 10px;
-}
-
-.row { 
+  
+  .List-table th,
+  .List-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .List-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .List-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .List-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .List-table img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+  
+  .table-container {
     display: flex;
-    gap: 10px;
-}
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 10px;
+    position: relative;
 
-
+  }

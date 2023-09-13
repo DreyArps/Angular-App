@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserlistComponent } from './userlist/userlist.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -13,13 +11,18 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+
+import { AppRoutingModule } from './app-routing.module';
+import { UserlistComponent } from './userlist/userlist.component';
+import { AppComponent } from './app.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    UserlistComponent
+    UserlistComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +34,9 @@ import {MatInputModule} from '@angular/material/input';
     MatSidenavModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
-    
+    MatInputModule,
+    MatMenuModule,
+    AppRoutingModule
 
   ],
   providers: [],
