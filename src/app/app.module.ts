@@ -12,10 +12,16 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { UserlistComponent } from './userlist/userlist.component';
 import { AppComponent } from './app.component';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 
@@ -23,6 +29,8 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     UserlistComponent,
+    User,
+    
   ],
   imports: [
     BrowserModule,
@@ -36,10 +44,12 @@ import { AppComponent } from './app.component';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatTableModule,
+    HttpClientModule,
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [HttpClientModule,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
