@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { User } from './user';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-   private users = [
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john.doe@example.com',
-      avatarUrl: 'https://via.placeholder.com/50'
-    }
-  ];
+  private apiUrl = 'https://reqres.in/api/users';
+
+  constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.users;
+    return this.http.get<any>(this.apiUrl);
   }
 
 }

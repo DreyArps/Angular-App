@@ -15,6 +15,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { UserlistComponent } from './userlist/userlist.component';
 import { AppComponent } from './app.component';
@@ -29,7 +30,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     UserlistComponent,
-    User,
     
   ],
   imports: [
