@@ -9,6 +9,12 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
+
+  userAddForm() {
+throw new Error('Method not implemented.');
+
+
+}
   users: any[] = [];
   displayedColumns: string[] = ['position', 'first_name', 'last_name', 'email', 'avatar'];
   dataSource = new MatTableDataSource<any>();
