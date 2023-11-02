@@ -21,6 +21,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     UserlistComponent,
+    HeaderComponent,
     
   ],
   imports: [
