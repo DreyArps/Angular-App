@@ -22,7 +22,8 @@ import { AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 
 
 
@@ -32,10 +33,12 @@ import { HeaderComponent } from './header/header.component';
     AppComponent,
     UserlistComponent,
     HeaderComponent,
+    AddUserDialogComponent,
     
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatToolbarModule,
