@@ -7,11 +7,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./add-user-dialog.component.css']
 })
 export class AddUserDialogComponent {
+email: any;
 
   constructor(
     private dialogRef: MatDialogRef<AddUserDialogComponent>,
     @Inject (MAT_DIALOG_DATA) public data: any,
   ){
+   
+    
+ 
   }
-
 }
