@@ -22,8 +22,11 @@ img{
 
 }
 
-
 .addUser{
   float: right;
   margin: 20px 20px 5px;
+}
+
+.mat-mdc-table{
+  padding: 10px 50px;
 }

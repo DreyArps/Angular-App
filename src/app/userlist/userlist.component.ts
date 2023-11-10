@@ -21,7 +21,7 @@ throw new Error('Method not implemented.');
   displayedColumns: string[] = ['position', 'first_name', 'last_name', 'email', 'avatar', 'action'];
   dataSource = new MatTableDataSource<any>();
   constructor(private userService: UserService,
-    public dialog: MatDialog         ) {}
+    public dialog: MatDialog ) {}
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -36,11 +36,10 @@ throw new Error('Method not implemented.');
   }
   
   AddUserDialogComponent(): void{ 
-
     const dialogRef = this.dialog.open(AddUserDialogComponent, { 
+
         });
-    dialogRef.afterClosed().subscribe(result =>{
-      
+    dialogRef.afterClosed().subscribe(result =>{        
     });
   }
   }
