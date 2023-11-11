@@ -12,6 +12,12 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UserlistComponent implements OnInit {
 
+  data: any[] = [];
+
+  first_name: any;
+  last_name: any;
+  email:any;
+
   userAddForm() {
 throw new Error('Method not implemented.');
 
@@ -34,14 +40,31 @@ throw new Error('Method not implemented.');
       console.log(data.data)
     });
   }
-  
-  AddUserDialogComponent(): void{ 
-    const dialogRef = this.dialog.open(AddUserDialogComponent, { 
 
-        });
-    dialogRef.afterClosed().subscribe(result =>{        
+  removeUser(id: number){
+    console.log(id)
+    this.userService.deleteUser(id).subscribe((data) => {
+    console.log(data)
     });
   }
+  
+  AddUserDialogComponent(): void { 
+    const dialogRef = this.dialog.open(AddUserDialogComponent, { 
+      data: {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {   
+      if (result) {
+        console.log('result', result);
+        this.userService.createUser(result);
+      }
+    });
+  }
+
   }
 
 

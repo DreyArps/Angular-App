@@ -1,25 +1,27 @@
 <div mat-dialog-title>
     <h1>Create User</h1>
 </div>
-    <div mat-dialog-content class="content">
-        <div class="row">
-            <mat-form-field appearance="outline">
-                <mat-label>First Name</mat-label>
-                <input matInput placeholder="example: John" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Last Name</mat-label>
-                <input matInput placeholder="example: Doe" required>
-            </mat-form-field>
-        </div>
-            <div class="row-2">
+    <form [formGroup]="addUserform" (ngSubmit)="onSubmit()">
+        <div mat-dialog-content class="content" >
+            <div class="row">
                 <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Doe@example.com" required>
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="example: John" required formControlName="first_name">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="example: Doe" required formControlName="last_name">
                 </mat-form-field>
             </div>
-    </div>
+                <div class="row-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Doe@example.com" required formControlName="email">
+                    </mat-form-field>
+                </div>
+        </div>
         <div mat-dialog-actions class="action">
-            <button mat-raised-button color="primary">Save</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
             <button mat-raised-button (click)="close()" color="accent">Cancel</button>
         </div>
+    </form>

@@ -25,6 +25,8 @@ import { HeaderComponent } from './header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -37,6 +39,7 @@ import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.compon
     
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     FlexLayoutModule,
     BrowserAnimationsModule,

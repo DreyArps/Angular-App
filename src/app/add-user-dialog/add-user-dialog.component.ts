@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,26 +8,47 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./add-user-dialog.component.css']
 })
 export class AddUserDialogComponent implements OnInit {
+ 
   addUserform: FormGroup;
 
   constructor(
-    private   fb: FormBuilder,
+    private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-
-    
     // Initialize the form in the constructor
     this.addUserform = this.fb.group({
+      first_name: new FormControl(this.data.first_name, Validators.required),
+      last_name: new FormControl(this.data.last_name, Validators.required),
+      email: new FormControl(this.data.email, [Validators.required, Validators.email]),
       // Define your form controls here
     });
   }
 
   ngOnInit(): void {
+    console.log(this.data)
     // Any additional initialization logic
   }
 
   close() {
     this.dialogRef.close();
   }
+
+  // onSubmit() {
+  //   if (this.addUserform.valid) {
+  //     const formData = this.addUserform.value;
+  //     console.log('Form submitted:', formData);
+  //     this.dialogRef.close(this.data);
+  //   }
+  // }
+
+  onSubmit() {
+    if (this.addUserform.valid) {
+      this.data.first_name = this.addUserform.get('first_name')?.value;
+      this.data.last_name = this.addUserform.get('last_name')?.value;
+      this.data.email = this.addUserform.get('email')?.value;
+      this.dialogRef.close(this.data)
+    }
+  }
+
 }
