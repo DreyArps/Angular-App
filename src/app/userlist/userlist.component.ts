@@ -42,10 +42,15 @@ throw new Error('Method not implemented.');
   }
 
   removeUser(id: number){
-    console.log(id)
-    this.userService.deleteUser(id).subscribe((data) => {
-    console.log(data)
-    });
+   this.userService.deleteUser(id).subscribe(() => {
+    // Remove the user from the data source
+    const index = this.dataSource.data.findIndex(user => user.id === id);
+    if (index !== -1) {
+      this.dataSource.data.splice(index, 1);
+      this.dataSource._updateChangeSubscription(); // Update the table
+    }
+  });
+    
   }
   
   AddUserDialogComponent(): void { 
@@ -57,14 +62,14 @@ throw new Error('Method not implemented.');
       }
     });
   
-    dialogRef.afterClosed().subscribe(result => {   
+    dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('result', result);
-        this.userService.createUser(result);
+        // Add the new user to the data source
+        this.userService.createUser(result).subscribe(newUser => {
+          this.dataSource.data.push(newUser);
+          this.dataSource._updateChangeSubscription(); // Update the table
+        });
       }
     });
   }
-
-  }
-
-
+}

@@ -43,11 +43,13 @@ export class AddUserDialogComponent implements OnInit {
   // }
 
   onSubmit() {
-    if (this.addUserform.valid) {
-      this.data.first_name = this.addUserform.get('first_name')?.value;
-      this.data.last_name = this.addUserform.get('last_name')?.value;
-      this.data.email = this.addUserform.get('email')?.value;
-      this.dialogRef.close(this.data)
+   if (this.addUserform.valid) {
+    const newUser = {
+      first_name: this.addUserform.get('first_name')?.value,
+      last_name: this.addUserform.get('last_name')?.value,
+      email: this.addUserform.get('email')?.value,
+    };
+      this.dialogRef.close(newUser)
     }
   }
 
