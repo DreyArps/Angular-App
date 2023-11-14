@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+    <h1>Edit User</h1>
+  </div>
+  <form [formGroup]="editUserForm">
+    <div mat-dialog-content class="content">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="first_name" placeholder="example: John" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="last_name" placeholder="example: Doe" required>
+        </mat-form-field>
+      </div>
+      <div class="row-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Doe@example.com" required>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button (click)="close()" color="accent">Cancel</button>
+  </div>

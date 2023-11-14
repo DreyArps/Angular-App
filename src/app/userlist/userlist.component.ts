@@ -1,8 +1,12 @@
 import { Component, OnInit  } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
+
 import { MatTableDataSource } from '@angular/material/table';
+
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
+import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -41,6 +45,7 @@ throw new Error('Method not implemented.');
     });
   }
 
+
   removeUser(id: number){
    this.userService.deleteUser(id).subscribe(() => {
     // Remove the user from the data source
@@ -64,10 +69,27 @@ throw new Error('Method not implemented.');
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Add the new user to the data source
         this.userService.createUser(result).subscribe(newUser => {
           this.dataSource.data.push(newUser);
-          this.dataSource._updateChangeSubscription(); // Update the table
+          this.dataSource._updateChangeSubscription(); 
+        });
+      }
+    });
+  }
+
+  editUser(user: any): void {
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
+      data: { ...user }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.userService.updateUser(user.id, result).subscribe(updatedUser => {
+          const index = this.dataSource.data.findIndex(u => u.id === updatedUser.id);
+          if (index !== -1) {
+            this.dataSource.data[index] = updatedUser;
+            this.dataSource._updateChangeSubscription();
+          }
         });
       }
     });
