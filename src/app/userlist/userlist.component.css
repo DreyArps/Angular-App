@@ -30,3 +30,15 @@ img{
 .mat-mdc-table{
   padding: 10px 50px;
 }
+
+
+.mat-icon{
+ margin: 12px;
+ padding: 5px;
+}
+
+.mat-icon:hover{
+  background-color: rgb(198, 194, 194);
+  border-radius: 50%;
+
+}
