@@ -5,7 +5,7 @@ import { User } from '../user';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
-import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+
 
 import { MatDialog } from '@angular/material/dialog';
 
@@ -47,12 +47,20 @@ throw new Error('Method not implemented.');
 
 
   removeUser(id: number){
+    const Confirmed = window.confirm("Are you sure you want to delete this user?");
+
+    if (!Confirmed){ 
+
+      return;
+    } 
+
    this.userService.deleteUser(id).subscribe(() => {
     // Remove the user from the data source
     const index = this.dataSource.data.findIndex(user => user.id === id);
     if (index !== -1) {
       this.dataSource.data.splice(index, 1);
-      this.dataSource._updateChangeSubscription(); // Update the table
+      this.dataSource._updateChangeSubscription(); 
+      alert('User Deleted!');
     }
   });
     
@@ -68,30 +76,33 @@ throw new Error('Method not implemented.');
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.userService.createUser(result).subscribe(newUser => {
+      if (result) { 
+        this.userService.createUser(result.editedData).subscribe(newUser => {  
           this.dataSource.data.push(newUser);
           this.dataSource._updateChangeSubscription(); 
         });
       }
     });
   }
-
-  editUser(user: any): void {
-    const dialogRef = this.dialog.open(EditUserDialogComponent, {
-      data: { ...user }
-    });
+  editUser(data: any) {
+      const originalData = {...data};
+    this.dialog.open(AddUserDialogComponent, {
+      data,
+    }).afterClosed().subscribe(result => {
+      if (result && result.editedData) {
   
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.userService.updateUser(user.id, result).subscribe(updatedUser => {
-          const index = this.dataSource.data.findIndex(u => u.id === updatedUser.id);
-          if (index !== -1) {
-            this.dataSource.data[index] = updatedUser;
-            this.dataSource._updateChangeSubscription();
-          }
-        });
-      }
-    });
-  }
+        console.log('Edited data:', result.editedData);
+          const mergedData = { ...originalData, ...result.editedData};
+             this.userService.updateUser(data.id, mergedData).subscribe(updatedUser => {
+                  const index = this.dataSource.data.findIndex(user => user.id === data.id);
+                      if (index !== -1) {
+                          this.dataSource.data[index] = updatedUser;
+                          this.dataSource._updateChangeSubscription();
+                        }
+                    });
+                 } else if (result && result.newData) {
+            console.log('New data:', result.newData);
+        }
+      });
+    }
 }

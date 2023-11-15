@@ -26,7 +26,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 
 
 
@@ -37,7 +36,7 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
     UserlistComponent,
     HeaderComponent,
     AddUserDialogComponent,
-    EditUserDialogComponent,
+   
     
   ],
   imports: [

@@ -10,6 +10,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AddUserDialogComponent implements OnInit {
  
   addUserform: FormGroup;
+  isEditing: boolean;
+  title: string = 'Create User';
 
   constructor(
     private fb: FormBuilder,
@@ -17,16 +19,31 @@ export class AddUserDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     // Initialize the form in the constructor
-    this.addUserform = this.fb.group({
-      first_name: new FormControl(this.data.first_name, Validators.required),
-      last_name: new FormControl(this.data.last_name, Validators.required),
-      email: new FormControl(this.data.email, [Validators.required, Validators.email]),
-      // Define your form controls here
-    });
+    if(this.data){
+      this.addUserform = this.fb.group({
+        first_name: [this.data?.first_name || '', Validators.required],
+        last_name: [this.data?.last_name || '', Validators.required],
+        email: [this.data?.email || '', [Validators.required, Validators.email]],
+        // Define your form controls here
+      });
+    } else {
+      this.addUserform = this.fb.group({
+        first_name: ['', Validators.required],
+        last_name: [ '', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+      });
+
+    }
+    if(this.data.first_name == undefined && this.data.last_name == undefined && this.data.email == undefined){
+      this.title = 'Create User';
+    } else {
+      this.title = 'Update User';
+    }
+    this.isEditing = !!this.data;
   }
 
   ngOnInit(): void {
-    console.log(this.data)
+
     // Any additional initialization logic
   }
 
@@ -42,14 +59,29 @@ export class AddUserDialogComponent implements OnInit {
   //   }
   // }
 
+  // onSubmit() {
+  //   if (this.addUserform.valid) {
+  //     const userData = this.addUserform.value;
+
+  //     if (this.isEditing) {
+  //       // Emit edited data
+  //       this.dialogRef.close({ editedData: userData });
+  //     } else {
+  //       // Emit new data
+  //       this.dialogRef.close({ newData: userData });
+  //     }
+  //   }
+
   onSubmit() {
-   if (this.addUserform.valid) {
-    const newUser = {
-      first_name: this.addUserform.get('first_name')?.value,
-      last_name: this.addUserform.get('last_name')?.value,
-      email: this.addUserform.get('email')?.value,
-    };
-      this.dialogRef.close(newUser)
+    if (this.addUserform.valid) {
+      const userData = this.addUserform.value;
+      console.log(userData)
+      if (this.isEditing) {
+        this.dialogRef.close({ editedData: userData});
+      } else {
+       
+        this.dialogRef.close({ newData: userData });
+      }
     }
   }
 
