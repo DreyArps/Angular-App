@@ -1,4 +1,12 @@
 .mat-toolbar {
-    background-color: aqua; 
+    background-color: #458AF1; 
     color: white;
+    font-size: 40px;
   }
+
+  .mat-toolbar .mat-icon{
+    font-size: 40px;
+    padding: 30px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}

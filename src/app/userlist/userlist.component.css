@@ -11,6 +11,12 @@
   vertical-align: middle;
   text-align: center; /* Center the text horizontally */
   width: 200px;
+  background-color: white;
+}
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
 }
 
 
@@ -27,8 +33,22 @@ img{
   margin: 20px 20px 5px;
 }
 
+.mat-mdc-table tbody
+.mat-mdc-table tfoot
+.mat-mdc-table thead
+ .mat-mdc-cell
+ .mat-mdc-footer-cell
+ .mat-mdc-header-row
+ .mat-mdc-row
+ .mat-mdc-footer-row
+ .mat-mdc-table
+ .mat-mdc-header-cell{
+
+}
+
 .mat-mdc-table{
   padding: 10px 50px;
+  background-color: #EAF9FF;
 }
 
 

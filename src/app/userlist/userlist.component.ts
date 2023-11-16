@@ -28,7 +28,7 @@ throw new Error('Method not implemented.');
 
 }
   users: any[] = [];
-  displayedColumns: string[] = ['position', 'first_name', 'last_name', 'email', 'avatar', 'action'];
+  displayedColumns: string[] = ['position', 'avatar', 'first_name', 'last_name', 'email',  'action'];
   dataSource = new MatTableDataSource<any>();
   constructor(private userService: UserService,
     public dialog: MatDialog ) {}
