@@ -1,4 +1,14 @@
 
+h1{
+  margin: 40px 0 0 60px;
+  font-weight: bolder;
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+
 .mat-mdc-table tbody,
 .mat-mdc-table tfoot,
 .mat-mdc-table thead,
@@ -33,18 +43,6 @@ img{
   margin: 20px 20px 5px;
 }
 
-.mat-mdc-table tbody
-.mat-mdc-table tfoot
-.mat-mdc-table thead
- .mat-mdc-cell
- .mat-mdc-footer-cell
- .mat-mdc-header-row
- .mat-mdc-row
- .mat-mdc-footer-row
- .mat-mdc-table
- .mat-mdc-header-cell{
-
-}
 
 .mat-mdc-table{
   padding: 10px 50px;
